@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>注册用户--ajax版本</h2>
+    <form action="" method="POST">
+        <ul>
+            <li>
+                <label for="">用户名：</label>
+                <input type="" name="username" id="user">
+                <span id="msg"></span>
+            </li>
+            <li>
+                <label for="">密码:</label>
+                <input type='password' name="password">
+            </li>
+            <li>
+                <label for="">确认密码:</label>
+                <input type="password" name="repassword">
+            </li>
+            <li>
+                <label for=""></label>
+                <input type="submit" value="注册">
+            </li>
+        </ul>
+    </form>
+    <script>
+        var user=document.querySelector('#user')
+        var msg=document.querySelector('#msg')
+        user.onblur=function(){
+            var username=this.value
+            var xhr=new XMLHttpRequest()
+            // xhr.open('get','/check?username='+username)
+            xhr.open('get','/check?username='+username)
+            xhr.onreadystatechange=function(){
+                if (xhr.readyState==4 && xhr.status ==200) {
+                    msg.innerHTML =xhr.responseText
+                }
+            }
+            xhr.send(null)
+        }
+    </script>
+</body>
+</html>
